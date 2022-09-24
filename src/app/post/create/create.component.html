@@ -1,0 +1,48 @@
+
+<div class="container">
+    <h1>Create New Post</h1>
+  
+    <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+        
+    <form  [formGroup]="form" (ngSubmit)="submit()">
+  
+        <div class="form-group">
+            <label for="bookname">|Book Name:</label>
+            <input 
+                formControlName="bookname"
+                id="bookname" 
+                type="text" 
+                class="form-control">
+            <div *ngIf="f['bookname'].touched && f['bookname'].invalid" class="alert alert-danger">
+                <div *ngIf="f['bookname'].errors && f['bookname'].errors['required']">Book Name is required.</div>
+            </div>
+        </div>
+  
+        <div class="form-group">
+            <label for="bookdetail">Book Detail</label>
+            <textarea 
+                formControlName="bookdetail"
+                id="bookdetail" 
+                type="text" 
+                class="form-control">
+            </textarea>
+            <div *ngIf="f['bookdetail'].touched && f['bookdetail'].invalid" class="alert alert-danger">
+                <div *ngIf="f['bookdetail'].errors && f['bookdetail'].errors['required']">Book Detail is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="price">|Price:</label>
+            <input 
+                formControlName="price"
+                id="price" 
+                type="text" 
+                class="form-control">
+            <div *ngIf="f['price'].touched && f['price'].invalid" class="alert alert-danger">
+                <div *ngIf="f['price'].errors && f['price'].errors['required']">Price is required.</div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>
